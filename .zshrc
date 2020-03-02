@@ -89,3 +89,4 @@ alias pip="pip3"
 alias python="python3"
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
