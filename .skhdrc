@@ -1,5 +1,6 @@
 # open terminal
 alt - return : "${HOME}"/scripts/term.sh
+cmd - return : code
 
 # focus window
 fn - h : yabai -m window --focus west
@@ -22,28 +23,11 @@ alt + fn - l : yabai -m window --warp east
 # balance size of windows
 shift + alt - 0 : yabai -m space --balance
 
-# make floating window fill screen
-# shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
-
-# make floating window fill left-half of screen
-# shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
-
-# make floating window fill right-half of screen
-# shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
-
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
  shift + cmd - n : yabai -m space --create && \
                    index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
                    yabai -m window --space "${index}" && \
                    yabai -m space --focus "${index}"
-
-# create desktop and follow focus - uses jq for parsing json (brew install jq)
-# cmd + alt - n : yabai -m space --create && \
-#                 index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-#                 yabai -m space --focus "${index}"
-
-# destroy desktop
-# cmd + alt - w : yabai -m space --destroy
 
 # fast focus desktop
 fn - x : yabai -m space --focus recent
@@ -75,22 +59,6 @@ fn + cmd - 8 : yabai -m window --space  8; yabai -m space --focus 8
 fn + cmd - 9 : yabai -m window --space  9; yabai -m space --focus 9
 fn + cmd - 0 : yabai -m window --space 10; yabai -m space --focus 10
 
-# focus monitor
-# fn - x  : yabai -m display --focus recent
-# fn - z  : yabai -m display --focus prev
-# fn - c  : yabai -m display --focus next
-# fn - 1  : yabai -m display --focus 1
-# fn - 2  : yabai -m display --focus 2
-# fn - 3  : yabai -m display --focus 3
-
-# send window to monitor and follow focus
-# fn + cmd - x  : yabai -m window --display recent; yabai -m display --focus recent
-# fn + cmd - z  : yabai -m window --display prev; yabai -m display --focus prev
-# fn + cmd - c  : yabai -m window --display next; yabai -m display --focus next
-# fn + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
-# fn + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2
-# fn + cmd - 3  : yabai -m window --display 3; yabai -m display --focus 3
-
 # move window
 fn + ctrl - a : yabai -m window --move rel:-20:0
 fn + ctrl - s : yabai -m window --move rel:0:20
@@ -109,32 +77,8 @@ fn + cmd - s : yabai -m window --resize bottom:0:-20
 fn + cmd - w : yabai -m window --resize top:0:20
 fn + cmd - d : yabai -m window --resize right:-20:0
 
-# set insertion point in focused container
-# ctrl + alt - h : yabai -m window --insert west
-# ctrl + alt - j : yabai -m window --insert south
-# ctrl + alt - k : yabai -m window --insert north
-# ctrl + alt - l : yabai -m window --insert east
-
 # rotate tree
 alt - r : yabai -m space --rotate 90
-
-# mirror tree y-axis
-#alt - y : yabai -m space --mirror y-axis
-
-# mirror tree x-axis
-#alt - x : yabai -m space --mirror x-axis
-
-# toggle desktop offset
-# fn - a : yabai -m space --toggle padding; yabai -m space --toggle gap
-
-# toggle window parent zoom
-# fn - d : yabai -m window --toggle zoom-parent
-
-# toggle window fullscreen zoom
-# fn - f : yabai -m window --toggle zoom-fullscreen
-
-# toggle window native fullscreen
-# shift + alt - f : yabai -m window --toggle native-fullscreen
 
 # toggle window border
 shift + alt - b : yabai -m window --toggle border
